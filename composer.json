@@ -1,0 +1,27 @@
+{
+    "name": "fei/logger-package",
+    "description": "Logger client package integration for Objective PHP applications",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Flavien Rodrigues",
+            "email": "fro@opcoding.eu"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Fei\\Service\\Logger\\Package\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.flash-global.net"
+        }
+    ],
+    "require": {
+        "objective-php/application": "~1.1.0",
+        "fei/logger-client": "~1.2.0"
+    }
+}
