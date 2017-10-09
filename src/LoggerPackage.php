@@ -88,10 +88,14 @@ class LoggerPackage extends AbstractMiddleware
             $setters['setAsyncTransport'] = [$asyncTransport];
         }
 
+        $params = [
+            Logger::OPTION_BASEURL => $clientConfig->getServiceBaseUrl()
+        ] + $clientConfig->getParams();
+
         $app->getServicesFactory()->registerService([
             'id' => $this->identifier,
             'class' => Logger::class,
-            'params' => [$clientConfig->getParams()],
+            'params' => [$params],
             'setters' => $setters
         ]);
     }
