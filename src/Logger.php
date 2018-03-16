@@ -13,60 +13,60 @@ class Logger extends LoggerClient
 {
     /**
      * @param string $message
+     * @param int|null $category
      * @param array $context
      * @param string $namespace
-     * @param int|null $category
      * @return bool|\Fei\ApiClient\ResponseDescriptor
      */
-    public function debug(string $message, array $context = [], string $namespace = '', int $category = null)
+    public function debug(string $message, int $category = null, array $context = [], string $namespace = '')
     {
         return $this->notify($this->buildNotification(Notification::LVL_DEBUG, $category, $namespace, $message, $context));
     }
 
     /**
      * @param string $message
+     * @param int|null $category
      * @param array $context
      * @param string $namespace
-     * @param int|null $category
      * @return bool|\Fei\ApiClient\ResponseDescriptor
      */
-    public function info(string $message, array $context = [], string $namespace = '', int $category = null)
+    public function info(string $message, int $category = null, array $context = [], string $namespace = '')
     {
         return $this->notify($this->buildNotification(Notification::LVL_INFO, $category, $namespace, $message, $context));
     }
 
     /**
      * @param string $message
+     * @param int|null $category
      * @param array $context
      * @param string $namespace
-     * @param int|null $category
      * @return bool|\Fei\ApiClient\ResponseDescriptor
      */
-    public function warning(string $message, array $context = [], string $namespace = '', int $category = null)
+    public function warning(string $message, int $category = null, array $context = [], string $namespace = '')
     {
         return $this->notify($this->buildNotification(Notification::LVL_WARNING, $category, $namespace, $message, $context));
     }
 
     /**
      * @param string $message
+     * @param int|null $category
      * @param array $context
      * @param string $namespace
-     * @param int|null $category
      * @return bool|\Fei\ApiClient\ResponseDescriptor
      */
-    public function error(string $message, array $context = [], string $namespace = '', int $category = null)
+    public function error(string $message, int $category = null, array $context = [], string $namespace = '')
     {
         return $this->notify($this->buildNotification(Notification::LVL_ERROR, $category, $namespace, $message, $context));
     }
 
     /**
      * @param string $message
+     * @param int|null $category
      * @param array $context
      * @param string $namespace
-     * @param int|null $category
      * @return bool|\Fei\ApiClient\ResponseDescriptor
      */
-    public function panic(string $message, array $context = [], string $namespace = '', int $category = null)
+    public function panic(string $message, int $category = null, array $context = [], string $namespace = '')
     {
         return $this->notify($this->buildNotification(Notification::LVL_PANIC, $category, $namespace, $message, $context));
     }
