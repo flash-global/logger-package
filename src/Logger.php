@@ -13,79 +13,80 @@ class Logger extends LoggerClient
 {
     /**
      * @param string $message
+     * @param array $context
+     * @param string $namespace
      * @param int|null $category
      * @return bool|\Fei\ApiClient\ResponseDescriptor
      */
-    public function debug(string $message, int $category = null)
+    public function debug(string $message, array $context = [], string $namespace = '', int $category = null)
     {
-        return $this->notify(
-            $this->buildNotification(Notification::LVL_DEBUG, $category)
-                ->setMessage($message)
-        );
+        return $this->notify($this->buildNotification(Notification::LVL_DEBUG, $category, $namespace, $message, $context));
     }
 
     /**
      * @param string $message
+     * @param array $context
+     * @param string $namespace
      * @param int|null $category
      * @return bool|\Fei\ApiClient\ResponseDescriptor
      */
-    public function info(string $message, int $category = null)
+    public function info(string $message, array $context = [], string $namespace = '', int $category = null)
     {
-        return $this->notify(
-            $this->buildNotification(Notification::LVL_INFO, $category)
-                ->setMessage($message)
-        );
+        return $this->notify($this->buildNotification(Notification::LVL_INFO, $category, $namespace, $message, $context));
     }
 
     /**
      * @param string $message
+     * @param array $context
+     * @param string $namespace
      * @param int|null $category
      * @return bool|\Fei\ApiClient\ResponseDescriptor
      */
-    public function warning(string $message, int $category = null)
+    public function warning(string $message, array $context = [], string $namespace = '', int $category = null)
     {
-        return $this->notify(
-            $this->buildNotification(Notification::LVL_WARNING, $category)
-                ->setMessage($message)
-        );
+        return $this->notify($this->buildNotification(Notification::LVL_WARNING, $category, $namespace, $message, $context));
     }
 
     /**
      * @param string $message
+     * @param array $context
+     * @param string $namespace
      * @param int|null $category
      * @return bool|\Fei\ApiClient\ResponseDescriptor
      */
-    public function error(string $message, int $category = null)
+    public function error(string $message, array $context = [], string $namespace = '', int $category = null)
     {
-        return $this->notify(
-            $this->buildNotification(Notification::LVL_ERROR, $category)
-                ->setMessage($message)
-        );
+        return $this->notify($this->buildNotification(Notification::LVL_ERROR, $category, $namespace, $message, $context));
     }
 
     /**
      * @param string $message
+     * @param array $context
+     * @param string $namespace
      * @param int|null $category
      * @return bool|\Fei\ApiClient\ResponseDescriptor
      */
-    public function panic(string $message, int $category = null)
+    public function panic(string $message, array $context = [], string $namespace = '', int $category = null)
     {
-        return $this->notify(
-            $this->buildNotification(Notification::LVL_PANIC, $category)
-                ->setMessage($message)
-        );
+        return $this->notify($this->buildNotification(Notification::LVL_PANIC, $category, $namespace, $message, $context));
     }
 
+
     /**
-     * @param $level
-     * @param $category
+     * @param int $level
+     * @param int $category
+     * @param string $namespace
+     * @param string $message
+     * @param array $context
      * @return Notification
      */
-    protected function buildNotification($level, $category): Notification
+    protected function buildNotification(int $level, int $category, string $namespace, string $message, array $context): Notification
     {
-        return new Notification([
-            'level' => $level,
-            'category' => $category
-        ]);
+        return (new Notification())
+            ->setLevel($level)
+            ->setCategory($category)
+            ->setNamespace($namespace)
+            ->setMessage($message)
+            ->setContext($context);
     }
 }
