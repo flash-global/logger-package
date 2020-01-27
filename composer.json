@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "objective-php/application": "~1.1.0",
-        "fei/logger-client": "~1.2.0"
+        "objective-php/application": "^1.1",
+        "fei/logger-client": "^1.2"
     }
 }
